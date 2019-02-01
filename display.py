@@ -10,23 +10,20 @@ class Display:
         epd.Clear(0xFF)
         self.epd = epd
 
-        image = Image.new('1', (epd1in54.EPD_WIDTH, epd1in54.EPD_HEIGHT), 255)
-        self.image = image
+        self.image = Image.new('1', (epd1in54.EPD_WIDTH, epd1in54.EPD_HEIGHT), 255)
 
         self.draw = ImageDraw.Draw(image)
-
-        font = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 24)
-        self.font = font
+        self.font_small = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 24)
 
     def welcome(self, price):
         line1 = 'All items'
         line2 = str(price)[:6] + ' mBTC'
 
-        self.draw.text((20, 120), line1, font = self.font, fill = 0)
-        self.draw.text((20, 160), line2, font = self.font, fill = 0)
+        self.draw.text((50, 130), line1, font = self.font_small, fill = 0)
+        self.draw.text((30, 160), line2, font = self.font_small, fill = 0)
 
         bmp = Image.open('assets/img/lightning100x100bw.bmp')
-        self.image.paste(bmp, (0,50))
+        self.image.paste(bmp, (50, 10))
 
         self.epd.display(self.epd.getbuffer(self.image.rotate(90)))
         exit()
