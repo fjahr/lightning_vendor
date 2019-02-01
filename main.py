@@ -1,7 +1,10 @@
 from keypad import keypad
 from price import Price
 
+PRICE = 0
+
 def main():
+    PRICE = Price.update_mbtc()
     keypad.registerKeyPressHandler(handleKey)
 
     try:
