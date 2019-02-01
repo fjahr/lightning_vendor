@@ -4,3 +4,4 @@ spidev
 wheel
 pillow
 qrcode
+libopenjp2-7

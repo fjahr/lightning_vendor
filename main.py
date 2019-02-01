@@ -7,7 +7,7 @@ PRICE = 0
 display = Display()
 
 def main():
-    PRICE = Price.update_mbtc()
+    PRICE = Price().update_mbtc()
     display.welcome(PRICE)
     keypad.registerKeyPressHandler(handleKey)
 
@@ -47,5 +47,4 @@ def selection(key):
         elif counter > 60:
             restart()
 
-
-
+main()
