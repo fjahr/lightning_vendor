@@ -13,22 +13,26 @@ class Display:
         image = Image.new('1', (epd1in54.EPD_WIDTH, epd1in54.EPD_HEIGHT), 255)
         self.image = image
 
-        font = ImageFont.truetype('./fonts/ubuntu/Ubuntu-M.ttf', 24)
+        self.draw = ImageDraw.Draw(image)
+
+        font = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 24)
         self.font = font
 
-    def welcome(price):
+    def welcome(self, price):
         line1 = 'All items'
-        line2 = str(price)[:6] + 'mBTC (0.30 €)'
+        line2 = str(price)[:6] + 'mBTC (0.30 E)'
 
         self.draw.text((50, 120), line1, font = self.font, fill = 0)
         self.draw.text((20, 160), line2, font = self.font, fill = 0)
 
-        bmp = Image.open('img/lightning100x100.bmp')
+        bmp = Image.open('assets/img/lightning100x100.bmp')
         self.image.paste(bmp, (0,50))
 
         epd.display(epd.getbuffer(self.image))
         exit()
 
+d = Display()
+d.welcome(0.1337321)
 
         # try:
         #     # Drawing on the image
