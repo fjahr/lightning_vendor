@@ -1,2 +1,5 @@
 requests
 pad4pi
+spidev
+wheel
+pillow
