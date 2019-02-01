@@ -1,7 +1,7 @@
 from keypad import keypad
 from price import Price
 from display import Display
-import server
+from server import new_invoice, invoice_paid
 import time
 
 PRICE = 0
