@@ -13,6 +13,7 @@ class Display:
         self.image = Image.new('1', (epd1in54.EPD_WIDTH, epd1in54.EPD_HEIGHT), 255)
         self.draw = ImageDraw.Draw(self.image)
         self.font_small = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 24)
+        self.font_large = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 100)
 
     def welcome(self, price):
         line1 = 'All items'
@@ -25,10 +26,15 @@ class Display:
         self.image.paste(bmp, (50, 10))
 
         self.epd.display(self.epd.getbuffer(self.image.rotate(90)))
-        exit()
+        self.epd.sleep()
 
-d = Display()
-d.welcome(0.1337321)
+    def choice(self, key):
+        self.draw.text((50, 50), key, font = self.font_large, fill = 0)
+
+        self.epd.display(self.epd.getbuffer(self.image.rotate(90)))
+        self.epd.sleep()
+
+Display().choice("1")
 
         # try:
         #     # Drawing on the image
