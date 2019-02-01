@@ -11,8 +11,7 @@ class Display:
         self.epd = epd
 
         self.image = Image.new('1', (epd1in54.EPD_WIDTH, epd1in54.EPD_HEIGHT), 255)
-
-        self.draw = ImageDraw.Draw(image)
+        self.draw = ImageDraw.Draw(self.image)
         self.font_small = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 24)
 
     def welcome(self, price):
