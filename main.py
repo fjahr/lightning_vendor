@@ -1,4 +1,5 @@
 from keypad import keypad
+from price import Price
 
 def main():
     keypad.registerKeyPressHandler(handleKey)
