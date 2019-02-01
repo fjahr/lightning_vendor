@@ -2,6 +2,7 @@ from keypad import keypad
 from price import Price
 from display import Display
 import server
+import time
 
 PRICE = 0
 display = Display()
