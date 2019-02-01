@@ -20,15 +20,15 @@ class Display:
 
     def welcome(self, price):
         line1 = 'All items'
-        line2 = str(price)[:6] + 'mBTC (0.30 E)'
+        line2 = str(price)[:6] + ' mBTC'
 
-        self.draw.text((50, 120), line1, font = self.font, fill = 0)
+        self.draw.text((20, 120), line1, font = self.font, fill = 0)
         self.draw.text((20, 160), line2, font = self.font, fill = 0)
 
-        bmp = Image.open('assets/img/lightning100x100.bmp')
+        bmp = Image.open('assets/img/lightning100x100bw.bmp')
         self.image.paste(bmp, (0,50))
 
-        epd.display(epd.getbuffer(self.image))
+        self.epd.display(self.epd.getbuffer(self.image.rotate(90)))
         exit()
 
 d = Display()
