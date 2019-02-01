@@ -29,13 +29,11 @@ class Display:
         self.image.paste(bmp, (50, 10))
 
         self.epd.display(self.epd.getbuffer(self.image.rotate(90)))
-        self.epd.sleep()
 
     def choice(self, key):
         self.draw.text((75, 40), key, font = self.font_large, fill = 0)
 
         self.epd.display(self.epd.getbuffer(self.image.rotate(90)))
-        self.epd.sleep()
 
     def invoice(self, invoice):
         generate_qr(invoice)
