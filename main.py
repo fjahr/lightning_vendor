@@ -11,18 +11,18 @@ def main():
     display.welcome(PRICE)
     keypad.registerKeyPressHandler(handleKey)
 
-    try:
-        while True:
-            time.sleep(0.1)
-    except:
-        keypad.cleanup()
+    while True:
+        time.sleep(0.1)
 
 def handleKey(key):
     if key in ["1", "2", "3", "4"]:
+        print(key)
         selection(key)
     elif (key=="#"):
+        print(key)
         restart()
     else:
+        print(key)
         print("key not used")
 
 def restart():
