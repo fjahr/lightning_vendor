@@ -1,36 +1,51 @@
 from keypad import keypad
 from price import Price
 from display import Display
+import server
 
 PRICE = 0
+display = Display()
 
 def main():
     PRICE = Price.update_mbtc()
-    display = Display()
     display.welcome(PRICE)
     keypad.registerKeyPressHandler(handleKey)
 
     try:
         while True:
             time.sleep(0.1)
-
-            
     except:
         keypad.cleanup()
 
 def handleKey(key):
-    if (key=="1"):
-        print("number 1")
-    elif (key=="2"):
-        print("number 2")
-    elif (key=="3"):
-        print("number 3")
-    elif (key=="4"):
-        print("number 4")
+    if key in ["1", "2", "3", "4"]:
+        selection(key)
     elif (key=="#"):
-        print("escape")
+        restart()
     else:
         print("key not used")
+
+def restart():
+    display.welcome(PRICE)
+    display.clean_invoice()
+
+def selection(key):
+    display.choice(key)
+    time.sleep(1)
+    id, invoice = new_invoice(PRICE)
+    display.invoice(invoice)
+
+    counter = 0
+    while True:
+        time.sleep(1)
+        counter += 1
+
+        if invoice_paid(id):
+            display.thank()
+            # servo action with key
+            restart()
+        elif counter > 60:
+            restart()
 
 
 

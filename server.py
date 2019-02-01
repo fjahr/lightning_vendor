@@ -8,7 +8,7 @@ def new_invoice(amount_mbtc):
 
     r = requests.post(url, data = req_data)
 
-    return {'id': r['id'], 'invoice': r['payreq']}
+    return r['id'], r['payreq']
 
 def invoice_paid(id):
     url = config.charge_url + '/invoice/' + id
