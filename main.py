@@ -12,7 +12,9 @@ def main():
 
     try:
         while True:
-            time.sleep(0.005)
+            time.sleep(0.1)
+
+            
     except:
         keypad.cleanup()
 
@@ -29,5 +31,6 @@ def handleKey(key):
         print("escape")
     else:
         print("key not used")
+
 
 

@@ -14,7 +14,7 @@ class Display:
 
         self.image = Image.new('1', (epd1in54.EPD_WIDTH, epd1in54.EPD_HEIGHT), 255)
         self.draw = ImageDraw.Draw(self.image)
-        self.font_small = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 12)
+        self.font_small = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 14)
         self.font_medium = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 24)
         self.font_large = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 100)
 
