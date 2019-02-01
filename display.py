@@ -19,6 +19,8 @@ class Display:
         self.font_large = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 100)
 
     def welcome(self, price):
+        self.epd.Clear(0xFF)
+
         line1 = 'All items'
         line2 = str(price)[:6] + ' mBTC'
 
@@ -31,11 +33,15 @@ class Display:
         self.epd.display(self.epd.getbuffer(self.image.rotate(90)))
 
     def choice(self, key):
+        self.epd.Clear(0xFF)
+
         self.draw.text((75, 40), key, font = self.font_large, fill = 0)
 
         self.epd.display(self.epd.getbuffer(self.image.rotate(90)))
 
     def invoice(self, invoice):
+        self.epd.Clear(0xFF)
+
         generate_qr(invoice)
 
         bmp = Image.open('tmp/qr.bmp')
@@ -47,6 +53,8 @@ class Display:
         self.epd.display(self.epd.getbuffer(self.image.rotate(90)))
 
     def thank(self):
+        self.epd.Clear(0xFF)
+
         self.draw.text((20, 80), 'Thank you!', font = self.font_medium, fill = 0)
 
         self.epd.display(self.epd.getbuffer(self.image.rotate(90)))
