@@ -41,7 +41,7 @@ class Display:
         generate_qr(invoice)
 
         bmp = Image.open('tmp/qr.bmp')
-        self.image.paste(bmp, (10, 0))
+        self.image.paste(bmp, (13, 0))
 
         line1 = 'Press any key to start over'
         self.draw.text((5, 185), line1, font = self.font_small, fill = 0)
