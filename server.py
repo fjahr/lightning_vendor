@@ -21,3 +21,5 @@ def invoice_paid(id):
         return True
     else:
         return False
+
+print(new_invoice(0.1337))

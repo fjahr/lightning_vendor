@@ -1,4 +1,6 @@
 import requests
+import time
+import threading
 
 UPDATE_URL = 'https://api.coindesk.com/v1/bpi/currentprice.json'
 
@@ -17,4 +19,20 @@ class Price:
         price = euro_cent_price/(rate*100)
 
         return price
+
+class PriceUpdater:
+    def __init__(self, vendor):
+        self.interval = 5
+        self.vendor = vendor
+
+        thread = threading.Thread(target=self.run, args=())
+        thread.daemon = True
+        thread.start()
+
+    def run(self):
+        while True:
+            time.sleep(self.interval)
+            self.vendor.price = Price().update_mbtc()
+
+            print(datetime.datetime.now().__str__() + ' : Updated Price ' + self.vendor.price)
 
