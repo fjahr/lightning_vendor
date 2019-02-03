@@ -27,7 +27,8 @@ class Display:
         draw.text((50, 130), line1, font = self.font_medium, fill = 0)
         draw.text((30, 160), line2, font = self.font_medium, fill = 0)
 
-        bmp = Image.open('assets/img/lightning100x100bw.bmp')
+        image_path = os.path.join(os.path.dirname(__file__), 'assets/img/lightning100x100bw.bmp')
+        bmp = Image.open(image_path)
         image.paste(bmp, (50, 10))
 
         self.epd.display(self.epd.getbuffer(image.rotate(90)))
@@ -65,7 +66,7 @@ class Display:
 
     def clean_invoice(self):
         try:
-            image_path = os.path.join(os.path.dirname(__file__), 'tmp/qr.bmp')
-            os.remove(image_path)
+            qr_path = os.path.join(os.path.dirname(__file__), 'tmp/qr.bmp')
+            os.remove(qr_path)
         except:
             return

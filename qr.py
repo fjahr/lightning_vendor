@@ -14,5 +14,5 @@ def generate_qr(data):
 
     img = qr.make_image()
 
-    image_path = os.path.join(os.path.dirname(__file__), 'tmp/qr.bmp')
-    img.save(image_path)
+    qr_path = os.path.join(os.path.dirname(__file__), 'tmp/qr.bmp')
+    img.save(qr_path)
