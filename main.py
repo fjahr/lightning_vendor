@@ -41,6 +41,9 @@ def selection(key):
         time.sleep(1)
         counter += 1
 
+        print("waiting for payment try " + str(counter))
+        print("checking invoice " + str(id))
+
         if invoice_paid(id):
             display.thank()
             # servo action with key

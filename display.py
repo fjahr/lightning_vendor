@@ -36,6 +36,7 @@ class Display:
         draw = ImageDraw.Draw(image)
 
         draw.text((75, 40), key, font = self.font_large, fill = 0)
+        draw.text((20, 160), "Generating invoice...", font = self.font_medium, fill = 0)
 
         self.epd.display(self.epd.getbuffer(image.rotate(90)))
 
@@ -62,4 +63,7 @@ class Display:
         self.epd.display(self.epd.getbuffer(image.rotate(90)))
 
     def clean_invoice(self):
-        os.remove("tmp/qr.bmp")
+        try:
+            os.remove("tmp/qr.bmp")
+        except:
+            return
