@@ -1,4 +1,5 @@
 import qrcode
+import os
 
 def generate_qr(data):
     qr = qrcode.QRCode(
@@ -12,4 +13,6 @@ def generate_qr(data):
     qr.make(fit=True)
 
     img = qr.make_image()
-    img.save("tmp/qr.bmp")
+
+    image_path = os.path.join(os.path.dirname(__file__), 'tmp/qr.bmp')
+    img.save(image_path)

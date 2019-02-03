@@ -12,9 +12,10 @@ class Display:
         epd.Clear(0xFF)
         self.epd = epd
 
-        self.font_small = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 14)
-        self.font_medium = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 24)
-        self.font_large = ImageFont.truetype('assets/fonts/ubuntu/Ubuntu-M.ttf', 100)
+        font_path = os.path.join(os.path.dirname(__file__), 'assets/fonts/ubuntu/Ubuntu-M.ttf')
+        self.font_small = ImageFont.truetype(font_path, 14)
+        self.font_medium = ImageFont.truetype(font_path, 24)
+        self.font_large = ImageFont.truetype(font_path, 100)
 
     def welcome(self, price):
         image = Image.new('1', (epd1in54.EPD_WIDTH, epd1in54.EPD_HEIGHT), 255)
@@ -64,6 +65,7 @@ class Display:
 
     def clean_invoice(self):
         try:
-            os.remove("tmp/qr.bmp")
+            image_path = os.path.join(os.path.dirname(__file__), 'tmp/qr.bmp')
+            os.remove(image_path)
         except:
             return
