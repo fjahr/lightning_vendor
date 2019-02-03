@@ -22,7 +22,7 @@ class Price:
 
 class PriceUpdater:
     def __init__(self, vendor):
-        self.interval = 5
+        self.interval = 300
         self.vendor = vendor
 
         thread = threading.Thread(target=self.run, args=())
@@ -32,7 +32,4 @@ class PriceUpdater:
     def run(self):
         while True:
             time.sleep(self.interval)
-            self.vendor.price = Price().update_mbtc()
-
-            print(datetime.datetime.now().__str__() + ' : Updated Price ' + self.vendor.price)
-
+            self.vendor.update_price(Price().update_mbtc())

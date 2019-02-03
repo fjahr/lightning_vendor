@@ -6,51 +6,59 @@ import time
 
 class Vendor:
     def __init__(self):
+        self.state = "welcome"
         self.price = Price().update_mbtc()
         self.display = Display()
+        self.keypad = keypad
         PriceUpdater(self)
 
     def start(self):
-        # display.welcome(self.price)
-        # keypad.registerKeyPressHandler(handleKey)
+        self.state = "welcome"
+        self.cleanup()
+        self.display.welcome(self.price)
+        self.keypad.registerKeyPressHandler(self.selection)
 
         while True:
             time.sleep(0.1)
 
-def restart():
-    display.welcome(PRICE)
-    display.clean_invoice()
+    def cleanup(self):
+        self.display.clean_invoice()
 
-def handleKey(key):
-    if key in ["1", "2", "3", "4"]:
-        print(key)
-        selection(key)
-    elif (key=="#"):
-        print(key)
-        restart()
-    else:
-        print(key)
-        print("key not used")
+    def selection(self, key):
+        if key in ["1", "2", "3", "4"]:
+            self.state = "invoice"
+            self.display.choice(key)
 
-def selection(key):
-    display.choice(key)
-    time.sleep(1)
-    id, invoice = new_invoice(PRICE)
-    display.invoice(invoice)
+            id, invoice = new_invoice(self.price)
+            self.display.invoice(invoice)
+            self.keypad.registerKeyPressHandler(self.cancel)
 
-    counter = 0
-    while True:
-        time.sleep(1)
-        counter += 1
+            counter = 0
+            while True:
+                time.sleep(1)
+                counter += 1
 
-        print("waiting for payment try " + str(counter))
-        print("checking invoice " + str(id))
+                print("waiting for payment try " + str(counter))
+                print("checking invoice " + str(id))
 
-        if invoice_paid(id):
-            display.thank()
-            # servo action with key
-            restart()
-        elif counter > 60:
-            restart()
+                if invoice_paid(id):
+                    self.display.thank()
+                    # servo action with key
+                    print("GIVE CANDY!!!!!!!!!!!")
+                    self.start()
+                elif counter > 60:
+                    self.start()
+            else:
+                self.start()
+
+    def cancel(self, key):
+        self.start()
+
+    def update_price(self, price):
+        if self.state == "welcome":
+            self.price = price
+            self.start()
+        else:
+            self.price = price
 
 Vendor().start()
