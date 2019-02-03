@@ -48,7 +48,8 @@ class Display:
 
         generate_qr(invoice)
 
-        bmp = Image.open('tmp/qr.bmp')
+        qr_path = os.path.join(os.path.dirname(__file__), 'tmp/qr.bmp')
+        bmp = Image.open(qr_path)
         image.paste(bmp, (13, 0))
 
         line1 = 'Press any key to start over'
