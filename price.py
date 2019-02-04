@@ -15,7 +15,7 @@ class Price:
         raw_rate = data['bpi']['EUR']['rate']
         rate = float(raw_rate.replace(',', ''))
 
-        euro_cent_price = 50
+        euro_cent_price = 1
         price = euro_cent_price/(rate*100)
 
         return price
