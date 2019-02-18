@@ -32,4 +32,6 @@ class PriceUpdater:
     def run(self):
         while True:
             time.sleep(self.interval)
-            self.vendor.update_price(Price().update_mbtc())
+            new_price = Price().update_mbtc()
+            if new_price != self.vendor.price:
+                self.vendor.update_price(new_price)

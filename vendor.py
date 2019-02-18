@@ -1,4 +1,5 @@
 from server import new_invoice, invoice_paid
+from servo import Servo
 from price import Price, PriceUpdater
 from display import Display
 from keypad import keypad
@@ -43,8 +44,8 @@ class Vendor:
 
                 if invoice_paid(id):
                     self.display.thank()
-                    # servo action with key
                     print("GIVE CANDY!!!!!!!!!!!")
+                    Servo(key).release()
                     self.start()
                 elif counter > 60:
                     self.start()
@@ -60,5 +61,3 @@ class Vendor:
             self.start()
         else:
             self.price = price
-
-Vendor().start()
