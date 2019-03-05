@@ -39,11 +39,13 @@ class Vendor:
                 time.sleep(1)
                 counter += 1
 
+                # TODO
                 print("waiting for payment try " + str(counter))
                 print("checking invoice " + str(id))
 
                 if invoice_paid(id):
                     self.display.thank()
+                    # TODO
                     print("GIVE CANDY!!!!!!!!!!!")
                     Servo(key).release()
                     self.start()

@@ -3,6 +3,7 @@ import time
 
 class Servo:
     def __init__(self, key):
+        self.key = key
         GPIO.setmode(GPIO.BCM)
         self.pin = pin_for_key(key)
         GPIO.setup(self.pin, GPIO.OUT)
@@ -10,8 +11,10 @@ class Servo:
         self.motor.start(1.5)
 
     def release(self):
+        # TODO: optimize for each key
         self.motor.ChangeDutyCycle(2)
-        time.sleep(0.7)
+        release_time = release_time_for_key(self.key)
+        time.sleep(release_time)
         self.motor.ChangeDutyCycle(1.5)
 
     def __del__(self):
@@ -23,4 +26,12 @@ def pin_for_key(key):
         "2": 3,
         "3": 4,
         "4": 14,
+    }[key]
+
+def release_time_for_key(key):
+    return {
+        "1": 0.7,
+        "2": 0.7,
+        "3": 0.7,
+        "4": 0.7,
     }[key]
