@@ -31,19 +31,17 @@ class Vendor:
 
             id, invoice = new_invoice(self.price)
             self.display.invoice(invoice)
+            # remove for now
             # self.keypad.registerKeyPressHandler(self.cancel)
 
             counter = 0
             while True:
                 time.sleep(1)
                 counter += 1
-
-                # TODO
                 print("waiting for payment try " + str(counter))
 
                 if invoice_paid(id) or (counter > 10):
                     self.display.thank()
-                    # TODO
                     Servo(key).release()
                     break
                 elif counter > 60:
