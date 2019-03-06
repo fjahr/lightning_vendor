@@ -33,7 +33,7 @@ class Vendor:
 
             id, invoice = new_invoice(self.price)
             self.display.invoice(invoice)
-            self.keypad.registerKeyPressHandler(self.cancel)
+            # self.keypad.registerKeyPressHandler(self.cancel)
 
             counter = 0
             while True:
