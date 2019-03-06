@@ -51,8 +51,9 @@ class Vendor:
                     self.start()
                 elif counter > 60:
                     self.start()
-            else:
-                self.start()
+                break
+        else:
+            self.start()
 
     def cancel(self, key):
         self.start()
