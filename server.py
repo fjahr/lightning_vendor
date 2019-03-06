@@ -15,6 +15,7 @@ def invoice_paid(id):
     url = config.charge_url + '/invoice/' + id
 
     r = requests.get(url).json()
+    print(r['status'])
 
     if r['status'] == 'paid':
         return True

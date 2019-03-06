@@ -17,8 +17,9 @@ class Servo:
         time.sleep(release_time)
         self.motor.ChangeDutyCycle(1.5)
 
-    def __del__(self):
-        GPIO.cleanup()
+    # def __del__(self):
+        # should evidently not call cleanup here
+        # GPIO.cleanup()
 
 def pin_for_key(key):
     return {
