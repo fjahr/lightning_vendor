@@ -12,4 +12,6 @@ ROW_PINS = [12, 16, 20, 21]
 COL_PINS = [6, 13, 19, 26]
 
 factory = rpi_gpio.KeypadFactory()
-keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)
+
+def new_keypad(self):
+    factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)

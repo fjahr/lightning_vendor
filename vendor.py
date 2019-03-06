@@ -2,7 +2,7 @@ from server import new_invoice, invoice_paid
 from servo import Servo
 from price import Price, PriceUpdater
 from display import Display
-from keypad import keypad
+from keypad import new_keypad
 import time
 
 class Vendor:
@@ -10,14 +10,13 @@ class Vendor:
         self.state = "welcome"
         self.price = Price().update_mbtc()
         self.display = Display()
-        self.keypad = keypad
         PriceUpdater(self)
 
     def start(self):
         self.state = "welcome"
         self.cleanup()
         self.display.welcome(self.price)
-        self.keypad.registerKeyPressHandler(self.selection)
+        new_keypad().registerKeyPressHandler(self.selection)
         print('start loop')
 
         while True:
