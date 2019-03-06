@@ -27,6 +27,8 @@ class Vendor:
         self.display.clean_invoice()
 
     def selection(self, key):
+        print('key pressed')
+        print(key)
         if key in ["1", "2", "3", "4"]:
             self.state = "invoice"
             self.display.choice(key)
