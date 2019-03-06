@@ -17,16 +17,11 @@ class Servo:
         self.motor.ChangeDutyCycle(1.5)
 
 def pin_for_key(key):
-    # for demo only 3 and 4 will be ready
-    # return {
-    #     "1": 2,
-    #     "2": 3,
-    #     "3": 4,
-    #     "4": 14,
-    # }[key]
     return {
-        "1": 4,
-        "2": 14,
+        "1": 2,
+        "2": 3,
+        "3": 4,
+        "4": 14,
     }[key]
 
 def release_time_for_key(key):
