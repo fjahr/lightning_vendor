@@ -18,6 +18,7 @@ class Vendor:
         self.cleanup()
         self.display.welcome(self.price)
         self.keypad.registerKeyPressHandler(self.selection)
+        print('start loop')
 
         while True:
             time.sleep(0.1)

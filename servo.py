@@ -11,15 +11,10 @@ class Servo:
         self.motor.start(1.5)
 
     def release(self):
-        # TODO: optimize for each key
         self.motor.ChangeDutyCycle(2)
         release_time = release_time_for_key(self.key)
         time.sleep(release_time)
         self.motor.ChangeDutyCycle(1.5)
-
-    # def __del__(self):
-        # should evidently not call cleanup here
-        # GPIO.cleanup()
 
 def pin_for_key(key):
     return {
@@ -31,8 +26,8 @@ def pin_for_key(key):
 
 def release_time_for_key(key):
     return {
-        "1": 0.65,
-        "2": 0.65,
-        "3": 0.65,
-        "4": 0.65,
+        "1": 0.68,
+        "2": 0.68,
+        "3": 0.68,
+        "4": 0.68,
     }[key]
