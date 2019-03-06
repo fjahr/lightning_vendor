@@ -40,7 +40,7 @@ class Vendor:
                 counter += 1
                 print("waiting for payment try " + str(counter))
 
-                if invoice_paid(id) or (counter > 10):
+                if invoice_paid(id):
                     self.display.thank()
                     Servo(key).release()
                     break
