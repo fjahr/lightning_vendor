@@ -17,7 +17,6 @@ class Vendor:
         self.cleanup()
         self.display.welcome(self.price)
         new_keypad().registerKeyPressHandler(self.selection)
-        print('start loop')
 
         while True:
             time.sleep(0.1)
@@ -26,8 +25,6 @@ class Vendor:
         self.display.clean_invoice()
 
     def selection(self, key):
-        print('key pressed')
-        print(key)
         if key in ["1", "2", "3", "4"]:
             self.state = "invoice"
             self.display.choice(key)
@@ -43,17 +40,14 @@ class Vendor:
 
                 # TODO
                 print("waiting for payment try " + str(counter))
-                print("checking invoice " + str(id))
 
                 if invoice_paid(id) or (counter > 10):
                     self.display.thank()
                     # TODO
-                    print("GIVE CANDY!!!!!!!!!!!")
                     Servo(key).release()
                     break
                 elif counter > 60:
                     break
-
         self.start()
 
     def cancel(self, key):

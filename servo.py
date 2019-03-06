@@ -26,8 +26,8 @@ def pin_for_key(key):
 
 def release_time_for_key(key):
     return {
-        "1": 0.68,
-        "2": 0.68,
-        "3": 0.68,
-        "4": 0.68,
+        "1": 0.7,
+        "2": 0.7,
+        "3": 0.7,
+        "4": 0.7,
     }[key]
