@@ -44,7 +44,7 @@ class Vendor:
                     self.display.thank()
                     Servo(key).release()
                     break
-                elif counter > 60:
+                elif counter > 120:
                     break
         self.start()
 
