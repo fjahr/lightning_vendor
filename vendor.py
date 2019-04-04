@@ -5,6 +5,7 @@ from display import Display
 from keypad import new_keypad
 import time
 
+
 class Vendor:
     def __init__(self):
         self.state = "welcome"
@@ -44,7 +45,7 @@ class Vendor:
                     self.display.thank()
                     Servo(key).release()
                     break
-                elif counter > 120:
+                elif counter > 180:
                     break
         self.start()
 
