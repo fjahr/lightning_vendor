@@ -12,4 +12,6 @@ sudo setup.sh
 pip3 install -r requirements.txt
 ```
 
-## Running
+## Demo
+
+https://youtu.be/OgIIBA__6XA
